@@ -25,7 +25,7 @@ const Weather = () => {
     }
 
     const toCelsius = (k) => {
-        (k - 273.15).toFixed(1);
+        return (k - 273.15).toFixed(1);
     }
 
     // Convert to Indian Standard Time
@@ -70,13 +70,15 @@ const Weather = () => {
 
             setIcon(success.data.weather[0].icon);
             setLoading(false);
+            //setCity("");
+        
         })
             .catch(() => {
                 setError("City not found. Please enter a correct city!");
                 setShowDiv(false);
 
             })
-
+        
 
 
     };
@@ -90,6 +92,7 @@ const Weather = () => {
 
                     <input
                         type="text"
+                        value={city}
                         className="mt-3 p-2 border border-black rounded-md w-full outline-cyan-800"
                         placeholder="Enter your city"
                         onChange={handleCity}
